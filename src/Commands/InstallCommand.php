@@ -13,7 +13,7 @@ class InstallCommand extends Command
 
     public function handle()
     {
-        if (! $this->option('no-asset')) {
+        if (! $this->option('no-assets')) {
             $this->comment('Publishing Admin Panel Assets...');
             $this->callSilent('vendor:publish', ['--tag' => 'admin-panel-assets']);
         }
@@ -55,10 +55,10 @@ class InstallCommand extends Command
             $appConfig
         ));
 
-        file_put_contents(app_path('Providers/AdminPanelServiceProvider.php'), str_replace(
+        file_put_contents(app_path('Providers\AdminPanelServiceProvider.php'), str_replace(
             "namespace App\Providers;",
             "namespace {$namespace}\Providers;",
-            file_get_contents(app_path('Providers/AdminPanelServiceProvider.php'))
+            file_get_contents(app_path('Providers\AdminPanelServiceProvider.php'))
         ));
     }
 }

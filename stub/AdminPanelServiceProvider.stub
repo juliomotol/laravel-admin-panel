@@ -9,8 +9,10 @@ class AdminPanelServiceProvider extends AdminPanelApplicationServiceProvider
 {
     protected function build(AdminPanelManager $adminPanel): void
     {
-        // $adminPanel->setAppLogo(asset('/img/app-logo.png'))
-        //     ->sidebar()
+        // $adminPanel->sidebar()
         //     ->addNavigation('Dashboard', 'admin.dashboard');
+
+        // $adminPanel->account()
+        //     ->addNavigation('logout', 'auth.logout');
     }
 }

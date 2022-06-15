@@ -10,9 +10,11 @@ class AdminPanelServiceProvider extends PackageServiceProvider
 {
     public function packageBooted()
     {
-        $this->publishes([
-            $this->package->basePath('/../stubs/AdminPanelServiceProvider.stub') => app_path("app/Providers/AdminPanelServiceProvider.php"),
-        ], "{$this->package->name}-provider");
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                $this->package->basePath('\..\stubs\AdminPanelServiceProvider.stub') => app_path("Providers\AdminPanelServiceProvider.php"),
+            ], "{$this->package->name}-provider");
+        }
     }
 
     public function configurePackage(Package $package): void
