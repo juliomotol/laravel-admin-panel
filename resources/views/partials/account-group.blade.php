@@ -5,6 +5,6 @@
 @else
     <div class="dropdown-divider"></div>
 @endif
-@foreach ($group->getItems() as $item)
+@foreach ($group->items() as $item)
     @include('admin-panel::partials.account-item', compact('item'))
 @endforeach

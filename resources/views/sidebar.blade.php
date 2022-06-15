@@ -5,10 +5,10 @@
         </div>
     @endif
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar>
-        @foreach (AdminPanel::sidebar()->getItems() as $item)
+        @foreach (AdminPanel::sidebar()->items() as $item)
             @include('admin-panel::partials.sidebar-item', compact('item'))
         @endforeach
-        @foreach (AdminPanel::sidebar()->getGroups() as $group)
+        @foreach (AdminPanel::sidebar()->groups() as $group)
             @include('admin-panel::partials.sidebar-group', compact('group'))
         @endforeach
     </ul>

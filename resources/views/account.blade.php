@@ -7,10 +7,10 @@
             </div>
         </a>
         <div class="dropdown-menu dropdown-menu-end pt-0">
-            @foreach (AdminPanel::account()->getItems() as $item)
+            @foreach (AdminPanel::account()->items() as $item)
                 @include('admin-panel::partials.account-item', compact('item'))
             @endforeach
-            @foreach (AdminPanel::account()->getGroups() as $group)
+            @foreach (AdminPanel::account()->groups() as $group)
                 @include('admin-panel::partials.account-group', compact('group'))
             @endforeach
         </div>
