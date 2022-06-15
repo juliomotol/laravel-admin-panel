@@ -2,12 +2,12 @@
 
 namespace JulioMotol\AdminPanel\Views;
 
-use Illuminate\View\Component;
+use Illuminate\View\Component as BaseComponent;
 
-class AdminPanel extends Component
+class Component extends BaseComponent
 {
     public function __construct(
-        public readonly string $app_logo
+        public readonly ?string $app_logo = null
     ) {
     }
 

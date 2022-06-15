@@ -3,7 +3,7 @@
 namespace JulioMotol\AdminPanel;
 
 use JulioMotol\AdminPanel\Commands\InstallCommand;
-use JulioMotol\AdminPanel\Views\AdminPanel as AdminPanelComponent;
+use JulioMotol\AdminPanel\Views\Component;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -24,7 +24,7 @@ class AdminPanelServiceProvider extends PackageServiceProvider
             ->name('admin-panel')
             ->hasConfigFile()
             ->hasViews()
-            ->hasViewComponent('admin-panel', AdminPanelComponent::class)
+            ->hasViewComponent('admin-panel', Component::class)
             ->hasAssets()
             ->hasCommands([InstallCommand::class]);
     }
