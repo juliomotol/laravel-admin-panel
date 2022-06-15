@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Providers;
+
+use JulioMotol\AdminPanel\AdminPanelApplicationServiceProvider;
+use JulioMotol\AdminPanel\AdminPanelManager;
+
+class AdminPanelServiceProvider extends AdminPanelApplicationServiceProvider
+{
+    protected function build(AdminPanelManager $adminPanel): void
+    {
+        // $adminPanel->setAppLogo(asset('/img/app-logo.png'))
+        //     ->sidebar()
+        //     ->addNavigation('Dashboard', 'admin.dashboard');
+    }
+}

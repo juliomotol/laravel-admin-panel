@@ -1,24 +1,26 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "juliomotol/laravel-admin-panel",
+    "description": "This is my package laravel-admin-panel",
     "keywords": [
-        ":vendor_name",
+        "juliomotol",
         "laravel",
-        ":package_slug"
+        "laravel-admin-panel"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/juliomotol/laravel-admin-panel",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Julio Motol",
+            "email": "julio.motol89@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
         "spatie/laravel-package-tools": "^1.9.2",
-        "illuminate/contracts": "^9.0"
+        "illuminate/contracts": "^9.0",
+        "illuminate/console": "^9.0",
+        "illuminate/support": "^9.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8",
@@ -35,13 +37,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "JulioMotol\\AdminPanel\\": "src",
+            "JulioMotol\\AdminPanel\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "JulioMotol\\AdminPanel\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -51,15 +53,19 @@
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "JulioMotol\\AdminPanel\\AdminPanelServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "AdminPanel": "JulioMotol\\AdminPanel\\Facades\\AdminPanel"
             }
         }
     },
