@@ -29,8 +29,7 @@ class AdminPanelServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasViewComponent('admin-panel', Component::class)
             ->hasAssets()
-            ->hasCommands([InstallCommand::class])
-            ->hasViewComposer(['admin-panel::styles', 'admin-panel::scripts'], VersionComposer::class);
+            ->hasCommands([InstallCommand::class]);
     }
 
     public function packageRegistered()
