@@ -2,6 +2,7 @@
 
 namespace JulioMotol\AdminPanel;
 
+use Illuminate\Support\Facades\Blade;
 use JulioMotol\AdminPanel\Commands\InstallCommand;
 use JulioMotol\AdminPanel\Views\Component;
 use JulioMotol\AdminPanel\Views\Composers\VersionComposer;
@@ -29,5 +30,27 @@ class AdminPanelServiceProvider extends PackageServiceProvider
             ->hasAssets()
             ->hasCommands([InstallCommand::class])
             ->hasViewComposer(['admin-panel::styles', 'admin-panel::scripts'], VersionComposer::class);
+    }
+
+    public function packageRegistered()
+    {
+        $this->registerBladeDirectives();
+    }
+
+    protected function registerBladeDirectives(): void
+    {
+        $version_hash = md5('juliomotol/laravel-admin-panel@' . InstalledVersions::getVersion('juliomotol/laravel-admin-panel'));
+
+        Blade::directive('adminPanelStyle', function () use ($version_hash) {
+            $path = asset('vendor/admin-panel/css/index.css');
+
+            return "<link rel=\"stylesheet\" href=\"$path?$version_hash\">"
+        });
+
+        Blade::directive('adminPanelScript', function () use ($version_hash) {
+            $path = asset('vendor/admin-panel/js/index.js');
+
+            return "<script src=\"$path?$version_hash\"></script>";
+        });
     }
 }
