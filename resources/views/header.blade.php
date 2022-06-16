@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <button class="header-toggler px-md-0 me-md-3 d-md-none" type="button"
             onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
-            <i class="icon icon-lg"></i> {{-- TODO: add icon --}}
+            <i class="icon icon-lg cil-menu"></i> {{-- TODO: add icon --}}
         </button>
         @if(isset($app_logo))
             <a class="header-brand d-md-none" href="#">
