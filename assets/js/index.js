@@ -1,2 +1,2 @@
-import '@coreui/coreui';
-import 'simplebar';
+require('@coreui/coreui');
+require('simplebar');
