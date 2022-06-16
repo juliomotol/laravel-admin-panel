@@ -1,0 +1,23 @@
+$enable-ltr: true;
+$enable-rtl: true;
+
+@import "~@coreui/coreui/scss/coreui";
+
+.wrapper {
+    width: 100%;
+    @include ltr-rtl("padding-left", var(--cui-sidebar-occupy-start, 0));
+    will-change: auto;
+    @include transition(padding 0.15s);
+}
+
+$coreui-icons-font-path: "../../fonts";
+
+@import "~@coreui/icons/scss/free";
+
+@import "~simplebar";
+
+.simplebar-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
