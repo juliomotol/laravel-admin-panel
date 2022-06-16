@@ -6,7 +6,6 @@ use Composer\InstalledVersions;
 use Illuminate\Support\Facades\Blade;
 use JulioMotol\AdminPanel\Commands\InstallCommand;
 use JulioMotol\AdminPanel\Views\Component;
-use JulioMotol\AdminPanel\Views\Composers\VersionComposer;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
