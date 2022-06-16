@@ -5,7 +5,9 @@ use JulioMotol\AdminPanel\Navigation\Badge;
 use JulioMotol\AdminPanel\Navigation\BadgeStyle;
 use JulioMotol\AdminPanel\Navigation\NavigationItem;
 
+use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertSame;
+use function PHPUnit\Framework\assertTrue;
 
 it('can make navigation item', function () {
     $item = new NavigationItem('Foo', '/foo');
@@ -27,11 +29,11 @@ it('can make navigation item w/ named route', function () {
 it('can add dropdown', function () {
     $item = new NavigationItem('Foo', '/foo');
 
-    $item->addDropdownItem('Bar', '/bar', callback: fn (NavigationItem $item) => $item->setAttribute('icon', 'bar'));
+    $item->addItem('Bar', '/bar', callback: fn (NavigationItem $item) => $item->setAttribute('icon', 'bar'));
 
-    assertSame('Bar', $item->dropdownItems()[0]->title);
-    assertSame('/bar', $item->dropdownItems()[0]->route);
-    assertSame('bar', $item->dropdownItems()[0]->attribute('icon'));
+    assertSame('Bar', $item->items()[0]->title);
+    assertSame('/bar', $item->items()[0]->route);
+    assertSame('bar', $item->items()[0]->attribute('icon'));
 });
 
 it('can add badge', function () {
@@ -49,4 +51,14 @@ it('can add attributes', function () {
     $item->setAttribute('icon', 'bar');
 
     assertSame('bar', $item->attribute('icon'));
+});
+
+it('is aware if it has items', function () {
+    $item = new NavigationItem('Foo', '/foo');
+
+    assertFalse($item->hasItems());
+
+    $item->addItem('Foo', '/foo');
+
+    assertTrue($item->hasItems());
 });

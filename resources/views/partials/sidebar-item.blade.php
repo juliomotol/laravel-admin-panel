@@ -1,6 +1,6 @@
-<li class="{{ $item->hasDropdown() ? 'nav-group' . ($item->isActive() ? 'show' : null) : 'nav-item' }}">
-    <a class="nav-link {{ $item->hasDropdown() ? 'nav-group-toggle' : null }} {{ $item->isActive() ? 'active' : null }}"
-        href="{{ !$item->hasDropdown() ? $item->route() : '#' }}">
+<li class="{{ $item->hasItems() ? 'nav-group' . ($item->isActive() ? 'show' : null) : 'nav-item' }}">
+    <a class="nav-link {{ $item->hasItems() ? 'nav-group-toggle' : null }} {{ $item->isActive() ? 'active' : null }}"
+        href="{{ !$item->hasItems() ? $item->route() : '#' }}">
         <i class="nav-icon {{  }}"></i>
         {{ $item->title }}
         @if ($item->badge)
@@ -9,9 +9,9 @@
             </span>
         @endif
     </a>
-    @if ($item->hasDropdown())
+    @if ($item->hasItems())
         <ul class="nav-group-items">
-            @foreach ($item->dropdownItems() as $dropdownItem)
+            @foreach ($item->items() as $dropdownItem)
                 <li class="nav-item {{ $dropdownItem->isActive() ? 'active' : null }}">
                     <a class="nav-link" href="{{ $item->route() }}">
                         <span class="nav-icon"></span>

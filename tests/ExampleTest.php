@@ -10,34 +10,34 @@ it('can test', function () {
     /** @var \JulioMotol\AdminPanel\NavigationStack */
     $sidebar = AdminPanel::sidebar();
 
-    $sidebar->addNavigation('Dashboard', '/')
+    $sidebar->addItem('Dashboard', '/')
         ->addGroup(
             'CMS',
             fn (NavigationGroup $group) => $group
-                ->addNavigation('Pages', '/pages')
-                ->addNavigation('News', '/news')
+                ->addItem('Pages', '/pages')
+                ->addItem('News', '/news')
         )
         ->addGroup(
             'Order',
             fn (NavigationGroup $group) => $group
-                ->addNavigation(
+                ->addItem(
                     'Orders',
                     '/order',
                     fn (NavigationItem $item) => $item->withBadge(Badge::make(10, BadgeStyle::SUCCESS))
                 )
-                ->addNavigation('Payments', '/payments')
+                ->addItem('Payments', '/payments')
         )
         ->addGroup(
             'Access',
             fn (NavigationGroup $group) => $group
-                ->addNavigation(
+                ->addItem(
                     'Users',
                     '/users',
                     fn (NavigationItem $item) => $item
-                        ->addDropdownItem('Admin', '/users/admins')
-                        ->addDropdownItem('Clients', '/users/clients')
+                        ->addItem('Admin', '/users/admins')
+                        ->addItem('Clients', '/users/clients')
                 )
-                ->addNavigation('Roles', '/news')
+                ->addItem('Roles', '/news')
         );
 
     // dd($sidebar);

@@ -10,9 +10,9 @@ class AdminPanelServiceProvider extends AdminPanelApplicationServiceProvider
     protected function build(AdminPanelManager $adminPanel): void
     {
         // $adminPanel->sidebar()
-        //     ->addNavigation('Dashboard', 'admin.dashboard');
+        //     ->addItem('Dashboard', 'admin.dashboard');
 
         // $adminPanel->account()
-        //     ->addNavigation('logout', 'auth.logout');
+        //     ->addItem('logout', 'auth.logout');
     }
 }

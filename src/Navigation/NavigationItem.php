@@ -4,12 +4,12 @@ namespace JulioMotol\AdminPanel\Navigation;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Traits\Conditionable;
+use JulioMotol\AdminPanel\Navigation\Concerns\HasNavigationItems;
 
 class NavigationItem
 {
     use Conditionable;
-
-    protected array $dropdownItems = [];
+    use HasNavigationItems;
 
     protected array $attributes = [];
 
@@ -34,44 +34,11 @@ class NavigationItem
         );
     }
 
-    public function isActive(): bool
-    {
-        return count($this->dropdownItems)
-            ? array_reduce(
-                $this->dropdownItems,
-                fn (bool $acc, self $item) => $acc ?: Route::has($item->route) && Route::is($item->route),
-                false
-            )
-            : Route::has($this->route) && Route::is($this->route);
-    }
-
-    public function route(): string
-    {
-        return Route::has($this->route) ? route($this->route, $this->parameters) : $this->route ?? '#';
-    }
-
     public function withBadge(Badge $badge): self
     {
         $this->badge = $badge;
 
         return $this;
-    }
-
-    public function addDropdownItem(string $title, ?string $route = null, mixed $parameters = null, \Closure $callback = null): self
-    {
-        $this->dropdownItems[] = self::build($title, $route, $parameters, $callback);
-
-        return $this;
-    }
-
-    public function hasDropdown(): bool
-    {
-        return count($this->dropdownItems) > 0;
-    }
-
-    public function dropdownItems(): array
-    {
-        return $this->dropdownItems;
     }
 
     public function setAttribute(string $key, mixed $value): self
@@ -84,5 +51,23 @@ class NavigationItem
     public function attribute(string $key = null): mixed
     {
         return $key ? $this->attributes[$key] : $this->attributes;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->hasItems()
+            ? array_reduce(
+                $this->items,
+                fn (bool $acc, self $item) => $acc ?: (Route::has($item->route) && Route::is($item->route)),
+                false
+            )
+            : (Route::has($this->route) && Route::is($this->route));
+    }
+
+    public function route(): string
+    {
+        return Route::has($this->route)
+            ? route($this->route, $this->parameters)
+            : ($this->route ?? '#');
     }
 }

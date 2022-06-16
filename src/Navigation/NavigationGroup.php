@@ -3,27 +3,23 @@
 namespace JulioMotol\AdminPanel\Navigation;
 
 use Illuminate\Support\Traits\Conditionable;
+use JulioMotol\AdminPanel\Navigation\Concerns\HasNavigationItems;
 
 class NavigationGroup
 {
     use Conditionable;
-
-    protected array $items = [];
+    use HasNavigationItems;
 
     public function __construct(
         public readonly string $title,
     ) {
     }
 
-    public function addNavigation(string $title, ?string $route = null, mixed $parameters = null, \Closure $callback = null): self
+    public static function build(string $title, \Closure $callback = null): self
     {
-        $this->items[] = NavigationItem::build($title, $route, $parameters, $callback);
-
-        return $this;
-    }
-
-    public function items(): array
-    {
-        return $this->items;
+        return tap(
+            new self($title),
+            fn (self $item) => $callback ? $callback($item) : null
+        );
     }
 }

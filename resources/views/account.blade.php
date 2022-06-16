@@ -7,7 +7,7 @@
                 {{-- TODO: add default icon --}}
             </div>
         </a>
-        @if (count(AdminPanel::account()->items()) > 0 || count(AdminPanel::account()->groups()) > 0)
+        @if (AdminPanel::account()->hasItems() || AdminPanel::account()->hasGroups())
             <div class="dropdown-menu dropdown-menu-end pt-0">
                 @foreach (AdminPanel::account()->items() as $item)
                     @include('admin-panel::partials.account-item', compact('item'))
@@ -16,5 +16,6 @@
                     @include('admin-panel::partials.account-group', compact('group'))
                 @endforeach
             </div>
+        @endif
     </li>
 </ul>
