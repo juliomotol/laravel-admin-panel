@@ -1,8 +1,8 @@
 <li class="{{ $item->hasItems() ? 'nav-group' . ($item->isActive() ? 'show' : null) : 'nav-item' }}">
     <a class="nav-link {{ $item->hasItems() ? 'nav-group-toggle' : null }} {{ $item->isActive() ? 'active' : null }}"
         href="{{ !$item->hasItems() ? $item->route() : '#' }}">
-        @if ($item->iconClass)
-            <i class="nav-icon {{ $item->iconClass }}"></i>
+        @if ($item->icon_class)
+            <i class="nav-icon {{ $item->icon_class }}"></i>
         @else
             <span class="nav-icon"></span>
         @endif
