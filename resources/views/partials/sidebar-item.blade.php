@@ -8,8 +8,8 @@
         @endif
         {{ $item->title }}
         @if ($item->badge)
-            <span class="badge badge-sm {{ $item->badge->badgeStyle->css() }} ms-auto">
-                {{ $item->badge->badgeStyle->title() }}
+            <span class="badge badge-sm {{ $item->badge->style->css() }} ms-auto">
+                {{ $item->badge->title() }}
             </span>
         @endif
     </a>
