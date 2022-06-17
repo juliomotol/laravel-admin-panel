@@ -4,9 +4,9 @@
             onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
             <i class="icon icon-lg cil-menu"></i> {{-- TODO: add icon --}}
         </button>
-        @if(isset($app_logo))
-            <a class="header-brand d-md-none" href="#">
-                <img src="{{ $app_logo }}" alt="app logo" class="sidebar-brand-full" width="118" height="46" />
+        @if ($headerLogo?->attributes->has('src'))
+            <a class="header-brand d-md-none" href="{{ $headerLogo->attributes->href }}">
+                <img {{ $headerLogo->attributes->except('href') }} />
             </a>
         @endif
         @include('admin-panel::account')

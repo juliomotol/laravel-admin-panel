@@ -1,7 +1,7 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
-    @if (isset($app_logo))
+    @if ($sidebarLogo?->attributes->has('src'))
         <div class="sidebar-brand d-none d-md-flex">
-            <img src="{{ $app_logo }}" alt="app logo" class="sidebar-brand-full" width="118" height="46" />
+            <img {{ $sidebarLogo->attributes->class(['sidebar-brand-full']) }} />
         </div>
     @endif
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar>
