@@ -15,6 +15,8 @@ class NavigationItem
 
     public ?Badge $badge = null;
 
+    public ?string $icon_class = null;
+
     public function __construct(
         public readonly string $title,
         public readonly ?string $route = null,
@@ -41,16 +43,11 @@ class NavigationItem
         return $this;
     }
 
-    public function setAttribute(string $key, mixed $value): self
+    public function withIconClass(string $icon_class): self
     {
-        $this->attributes[$key] = $value;
+        $this->icon_class = $icon_class;
 
         return $this;
-    }
-
-    public function attribute(string $key = null): mixed
-    {
-        return $key ? $this->attributes[$key] : $this->attributes;
     }
 
     public function isActive(): bool

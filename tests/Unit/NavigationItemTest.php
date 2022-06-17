@@ -29,11 +29,11 @@ it('can make navigation item w/ named route', function () {
 it('can add dropdown', function () {
     $item = new NavigationItem('Foo', '/foo');
 
-    $item->addItem('Bar', '/bar', callback: fn (NavigationItem $item) => $item->setAttribute('icon', 'bar'));
+    $item->addItem('Bar', '/bar', callback: fn (NavigationItem $item) => $item->withIconClass('bar'));
 
     assertSame('Bar', $item->items()[0]->title);
     assertSame('/bar', $item->items()[0]->route);
-    assertSame('bar', $item->items()[0]->attribute('icon'));
+    assertSame('bar', $item->items()[0]->icon_class);
 });
 
 it('can add badge', function () {
@@ -45,12 +45,12 @@ it('can add badge', function () {
     assertSame(BadgeStyle::PRIMARY, $item->badge->style);
 });
 
-it('can add attributes', function () {
+it('can add icon class', function () {
     $item = new NavigationItem('Foo', '/foo');
 
-    $item->setAttribute('icon', 'bar');
+    $item->withIconClass('bar');
 
-    assertSame('bar', $item->attribute('icon'));
+    assertSame('bar', $item->icon_class);
 });
 
 it('is aware if it has items', function () {

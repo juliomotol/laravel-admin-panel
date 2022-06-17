@@ -1,7 +1,11 @@
 <li class="{{ $item->hasItems() ? 'nav-group' . ($item->isActive() ? 'show' : null) : 'nav-item' }}">
     <a class="nav-link {{ $item->hasItems() ? 'nav-group-toggle' : null }} {{ $item->isActive() ? 'active' : null }}"
         href="{{ !$item->hasItems() ? $item->route() : '#' }}">
-        <i class="nav-icon"></i> {{-- TODO: configurable icons --}}
+        @if ($item->iconClass)
+            <i class="nav-icon {{ $item->iconClass }}"></i>
+        @else
+            <span class="nav-icon"></span>
+        @endif
         {{ $item->title }}
         @if ($item->badge)
             <span class="badge badge-sm {{ $item->badge->badgeStyle->css() }} ms-auto">
