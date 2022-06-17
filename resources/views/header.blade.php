@@ -5,6 +5,14 @@
             <i class="icon icon-lg cil-menu"></i> {{-- TODO: add icon --}}
         </button>
         @if ($headerLogo?->attributes->has('src') ?? false)
+            <a class="header-brand d-md-none" href="{{ $headerLogo->attributes->href ?? '#' }}">
+                <img {{ 
+                    $headerLogo->attributes->except('href')
+                        ->unless(
+                            $headerLogo->attributes->height,
+                            fn ($attributes) => $attributes->merge(['height' => 40])
+                        )
+                }} />
             </a>
         @endif
         @include('admin-panel::account')
