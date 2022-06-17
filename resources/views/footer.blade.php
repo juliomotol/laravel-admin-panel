@@ -1,5 +1,5 @@
 <footer class="footer">
-    @if ($footer)
+    @if ($footer ?? false)
         {{ $footer }}
     @else
         <div>
