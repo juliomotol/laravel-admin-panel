@@ -8,7 +8,7 @@ trait HasNavigationItems
 {
     protected array $items = [];
 
-    public function addItem(string $title, ?string $route = null, mixed $parameters = null, \Closure $callback = null): self
+    public function addItem(string $title, ?string $route = null, array $parameters = [], \Closure $callback = null): self
     {
         $this->items[] = NavigationItem::build($title, $route, $parameters, $callback);
 
