@@ -8,10 +8,8 @@
             <a class="header-brand d-md-none" href="{{ $headerLogo->attributes->href ?? '#' }}">
                 <img {{ 
                     $headerLogo->attributes->except('href')
-                        ->unless(
-                            $headerLogo->attributes->height,
-                            fn ($attributes) => $attributes->merge(['height' => 40])
-                        )
+                        ->unless($headerLogo->attributes->height ?? null)
+                        ->merge(['height' => 40])
                 }} />
             </a>
         @endif

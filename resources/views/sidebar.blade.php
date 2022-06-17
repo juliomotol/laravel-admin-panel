@@ -3,10 +3,8 @@
         <div class="sidebar-brand d-none d-md-flex">
             <img {{ 
                 $sidebarLogo->attributes->class(['sidebar-brand-full'])
-                    ->unless(
-                        $headerLogo->attributes->height,
-                        fn ($attributes) => $attributes->merge(['height' => 40])
-                    )
+                    ->unless($headerLogo->attributes->height ?? null)
+                    ->merge(['height' => 40])
             }} />
         </div>
     @endif
