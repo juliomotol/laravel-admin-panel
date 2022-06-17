@@ -1,9 +1,9 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
-    @if ($sidebarLogo?->attributes->has('src') ?? false)
+    @if ($sidebarBrand?->attributes->has('src') ?? false)
         <div class="sidebar-brand d-none d-md-flex">
             <img {{ 
-                $sidebarLogo->attributes->class(['sidebar-brand-full'])
-                    ->unless($headerLogo->attributes->height ?? null)
+                $sidebarBrand->attributes->class(['sidebar-brand-full'])
+                    ->unless($headerBrand->attributes->height ?? null)
                     ->merge(['height' => 40])
             }} />
         </div>
