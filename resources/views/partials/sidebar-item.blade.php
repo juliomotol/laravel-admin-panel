@@ -8,9 +8,7 @@
         @endif
         {{ $item->title }}
         @if ($item->badge)
-            <span class="badge badge-sm {{ $item->badge->style->css() }} ms-auto">
-                {{ $item->badge->title() }}
-            </span>
+            @include('admin-panel::partials.badge', ['badge' => $item->badge])
         @endif
     </a>
     @if ($item->hasItems())
@@ -20,6 +18,9 @@
                     <a class="nav-link" href="{{ $item->route() }}">
                         <span class="nav-icon"></span>
                         {{ $item->title }}
+                        @if ($item->badge)
+                            @include('admin-panel::partials.badge', ['badge' => $item->badge])
+                        @endif
                     </a>
                 </li>
             @endforeach
