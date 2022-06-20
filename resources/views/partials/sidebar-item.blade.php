@@ -15,11 +15,11 @@
         <ul class="nav-group-items">
             @foreach ($item->items() as $dropdownItem)
                 <li class="nav-item {{ $dropdownItem->isActive() ? 'active' : null }}">
-                    <a class="nav-link" href="{{ $item->route() }}">
+                    <a class="nav-link" href="{{ $dropdownItem->route() }}">
                         <span class="nav-icon"></span>
-                        {{ $item->title }}
-                        @if ($item->badge)
-                            @include('admin-panel::partials.badge', ['badge' => $item->badge])
+                        {{ $dropdownItem->title }}
+                        @if ($dropdownItem->badge)
+                            @include('admin-panel::partials.badge', ['badge' => $dropdownItem->badge])
                         @endif
                     </a>
                 </li>
