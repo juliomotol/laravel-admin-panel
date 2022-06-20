@@ -4,7 +4,6 @@
             aria-expanded="false">
             <div class="avatar avatar-md">
                 <img class="avatar-img" src="{{ AdminPanel::resolveAccountAvatar() ?? asset('vendor/admin-panel/img/user.png') }}" alt="user avatar">
-                {{-- TODO: add default icon --}}
             </div>
         </a>
         @if (AdminPanel::account()->hasItems() || AdminPanel::account()->hasGroups())
