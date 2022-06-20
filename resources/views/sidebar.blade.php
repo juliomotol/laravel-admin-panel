@@ -1,5 +1,5 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
-    @if ($sidebarBrand?->attributes->has('src') ?? false)
+    @if (isset($sidebarBrand) && $sidebarBrand->attributes->has('src') ?? false)
         <div class="sidebar-brand d-none d-md-flex">
             <img {{ 
                 $sidebarBrand->attributes->class(['sidebar-brand-full'])
